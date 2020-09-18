@@ -4,12 +4,17 @@ function Graph() {
   this.end = null;
   this.start = null;
 }
-
+Graph.prototype.reset = function () {
+  this.nodes.map((n) => {
+    n.searched = false;
+    n.parent = null;
+  });
+};
 Graph.prototype.addNode = function (n) {
-  // Node into array
+  // node into array
   this.nodes.push(n);
   let title = n.value;
-  // Node into "hash "
+  //node into hash
   this.graph[title] = n;
 };
 
@@ -18,12 +23,11 @@ Graph.prototype.getNode = function (actor) {
   return n;
 };
 
-Graph.prototype.setStart = function (actor) {
-  this.start = this.graph[actor];
-  return this.start;
-};
-
 Graph.prototype.setEnd = function (actor) {
   this.end = this.graph[actor];
   return this.end;
+};
+Graph.prototype.setStart = function (actor) {
+  this.start = this.graph[actor];
+  return this.start;
 };
